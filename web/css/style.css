@@ -1,0 +1,113 @@
+html {
+    font-family: arial;
+}
+
+body {
+    width: 100%;
+    margin: 0px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+}
+
+img#vorstand {
+    float: left;
+    padding: 10px;
+}
+
+div#top, 
+/*div#content,*/
+div#footer {	
+    float: left;
+    padding: 20px 10px;
+    background-color: #eee;
+    width: 100%;
+}
+
+div#top {
+    padding-bottom: 20px;
+}
+
+div#top img {
+    float: left;
+}
+
+div#top ul {
+    list-style-type: none;
+}
+
+div#top li {
+    background-color: #333;
+    float: left;
+}
+
+div#top a {
+    padding: 20px;
+    background-color: #433;
+    color: #fff;
+    text-decoration: none;
+}
+
+div#top a:hover {
+    background-color: #633;
+    text-decoration: underline;
+}
+
+div#top a:visited {
+    color: #eee;
+}
+
+div#content {
+}
+
+div#leftside {
+    background-color: #ffa;
+    width: 15%;
+    float: left;
+}
+
+div#center {
+    background-color: #faf;
+    width: 70%;
+    float: left;
+}
+
+div#rightside {
+    background-color: #aff;
+    width: 15%;
+    float: left;
+}
+
+div#footer {
+    float: left;
+}
+
+fieldset#formular {
+    margin: 15px 20px;
+}
+
+fieldset#formular input,
+fieldset#formular select,
+fieldset#formular textarea {
+    width: 100%;
+    clear: both;
+    margin-bottom: 20px;
+    resize: none;
+}
+
+fieldset#formular button {
+    background-color: #a45;
+    border: solid 1px #a22;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    padding: 7px 16px;
+    font-size: 13px;
+    margin: 4px 0px 0px 0px;
+}
