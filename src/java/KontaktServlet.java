@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 
+import Model.FormularListe;
 import Model.Kontaktformular;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,11 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author ExaShox
  */
 public class KontaktServlet extends HttpServlet {
-    
-    private final ArrayList<Kontaktformular> kontaktList;
-    
+
+    private final FormularListe formularListe = new FormularListe();
+
     public KontaktServlet() {
-        kontaktList = new ArrayList<>();
     }
 
     /**
@@ -37,18 +38,6 @@ public class KontaktServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet KontaktServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet KontaktServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,7 +53,7 @@ public class KontaktServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
         System.out.println("KontaktServlet.doGet()");
         try {
             Kontaktformular kontaktformular = new Kontaktformular(
@@ -74,18 +63,18 @@ public class KontaktServlet extends HttpServlet {
                     request.getParameter("description"),
                     request.getParameter("message")
             );
-            
-            kontaktList.add(kontaktformular);
+
+            formularListe.add(kontaktformular);
+            request.setAttribute("FormularData", kontaktformular);
         } catch (Exception e) {
             System.err.println(e);
         }
-        
-        int i = 1;
-        for(Kontaktformular kontaktformular : kontaktList) {
-            System.out.println("Nr. " + i);
-            i++;
-            kontaktformular.showMeWhatYouGot();
-        }
+
+        formularListe.consolenOutput();
+
+        request.setAttribute("FormularListe", formularListe);
+        RequestDispatcher rd = request.getRequestDispatcher("Details.jsp");
+        rd.include(request, response);
     }
 
     /**

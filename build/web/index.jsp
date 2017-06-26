@@ -1,3 +1,11 @@
+<%-- 
+    Document   : index
+    Created on : 19.06.2017, 12:42:39
+    Author     : ExaShox
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Startseite</title>
@@ -7,10 +15,10 @@
         <div id="top">
             <img height="100" src="img/logo.png"/>
             <ul>
-                <li><a href="index.html">Startseite</a></li>
-                <li><a href="Details.html">Details</a></li>
+                <li><a href="index.jsp">Startseite</a></li>
+                <li><a href="Details.jsp">Details</a></li>
                 <li><a href="Vorstand.html">Vorstand</a></li>
-                <li><a href="Formular.html">Formular</a></li>
+                <li><a href="Formular.jsp">Formular</a></li>
             </ul>
         </div>
 
@@ -24,6 +32,7 @@
                     <th>Name</th>
                     <th>Datum</th>
                 </tr>
+
                 <tr>
                     <td>Heinz</td>
                     <td>01.01.1990</td>

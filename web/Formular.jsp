@@ -1,3 +1,11 @@
+<%-- 
+    Document   : Formular
+    Created on : 19.06.2017, 12:41:47
+    Author     : ExaShox
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 ﻿<html>
     <head>
         <title>Formular</title>
@@ -7,10 +15,10 @@
         <div id="top">
             <img height="100" src="img/logo.png"/>
             <ul>
-                <li><a href="index.html">Startseite</a></li>
-                <li><a href="Details.html">Details</a></li>
+                <li><a href="index.jsp">Startseite</a></li>
+                <li><a href="Details.jsp">Details</a></li>
                 <li><a href="Vorstand.html">Vorstand</a></li>
-                <li><a href="Formular.html">Formular</a></li>
+                <li><a href="Formular.jsp">Formular</a></li>
             </ul>
         </div>
 
