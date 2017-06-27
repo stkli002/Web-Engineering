@@ -15,13 +15,9 @@ import java.util.List;
 public class FormularListe {
 
     private final List<Kontaktformular> kontaktformularList = new ArrayList<>();
-
-    /**
-     * Konstruktor
-     */
-    public FormularListe() {
-    }
-
+    
+    public FormularListe() {}
+    
     /**
      * Addet Kontaktformular
      *
@@ -30,12 +26,15 @@ public class FormularListe {
     public void add(Kontaktformular kontaktformular) {
         kontaktformularList.add(kontaktformular);
     }
+    
+    public List<Kontaktformular> getList() {
+        return kontaktformularList;
+    }
 
     public void consolenOutput() {
-        int i = 1;
+        int i = 0;
         for (Kontaktformular kontaktformular : kontaktformularList) {
-            System.out.println("Nr. " + i);
-            i++;
+            System.out.println("Nr. " + ++i);
             kontaktformular.showMeWhatYouGot();
         }
     }

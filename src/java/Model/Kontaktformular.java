@@ -12,16 +12,12 @@ package Model;
 public class Kontaktformular {
 
     private String firstname, lastname, date, description, message;
-
-    public Kontaktformular(String firstname, String lastname, String date, String description, String message) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.date = date;
-        this.description = description;
-        this.message = message;
-    }
+    private int id;
+    
+    public Kontaktformular() {}
 
     public void showMeWhatYouGot() {
+        System.out.println("ID: " + id);
         System.out.println("Vorname: " + firstname);
         System.out.println("Nachname: " + lastname);
         System.out.println("Datum: " + date);
@@ -29,6 +25,14 @@ public class Kontaktformular {
         System.out.println("Nachricht: " + message);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getFirstname() {
         return firstname;
     }

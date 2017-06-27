@@ -7,8 +7,6 @@
 import Model.FormularListe;
 import Model.Kontaktformular;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class KontaktServlet extends HttpServlet {
 
     private final FormularListe formularListe = new FormularListe();
-
-    public KontaktServlet() {
-    }
+    private int counter = 0;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,6 +34,20 @@ public class KontaktServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        switch (request.getParameter("action")) {
+            case "all":
+                all(request, response);
+                break;
+
+            case "form":
+                form(request, response);
+                break;
+
+            case "details":
+                details(request, response);
+                break;
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,28 +63,6 @@ public class KontaktServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-        System.out.println("KontaktServlet.doGet()");
-        try {
-            Kontaktformular kontaktformular = new Kontaktformular(
-                    request.getParameter("firstname"),
-                    request.getParameter("lastname"),
-                    request.getParameter("date"),
-                    request.getParameter("description"),
-                    request.getParameter("message")
-            );
-
-            formularListe.add(kontaktformular);
-            request.setAttribute("FormularData", kontaktformular);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-
-        formularListe.consolenOutput();
-
-        request.setAttribute("FormularListe", formularListe);
-        RequestDispatcher rd = request.getRequestDispatcher("Details.jsp");
-        rd.include(request, response);
     }
 
     /**
@@ -101,4 +89,39 @@ public class KontaktServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    protected void all(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("FormularList", formularListe.getList());
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        rd.include(request, response);
+    }
+
+    private void form(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        Kontaktformular kontaktformular = new Kontaktformular();
+        kontaktformular.setId(++counter);
+        kontaktformular.setFirstname(request.getParameter("firstname"));
+        kontaktformular.setLastname(request.getParameter("lastname"));
+        kontaktformular.setDate(request.getParameter("date"));
+        kontaktformular.setDescription(request.getParameter("description"));
+        kontaktformular.setMessage(request.getParameter("message"));
+        formularListe.add(kontaktformular);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("Details.jsp");
+        rd.include(request, response);
+    }
+
+    private void details(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        for (Kontaktformular k : formularListe.getList()) {
+            if (id == k.getId()) {
+                request.setAttribute("FormularData", k);
+                break;
+            }
+        }
+
+        RequestDispatcher rd = request.getRequestDispatcher("Details.jsp");
+        rd.include(request, response);
+    }
 }

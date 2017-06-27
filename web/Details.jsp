@@ -15,8 +15,7 @@
         <div id="top">
             <img height="100" src="img/logo.png"/>
             <ul>
-                <li><a href="index.jsp">Startseite</a></li>
-                <li><a href="Details.jsp">Details</a></li>
+                <li><a href="KontaktServlet?action=all">Startseite</a></li>
                 <li><a href="Vorstand.html">Vorstand</a></li>
                 <li><a href="Formular.jsp">Formular</a></li>
             </ul>
@@ -28,12 +27,21 @@
 
         <div id="center">
             <h1>Detail</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </p>
-            <p>
-                - Stephan Klimek (03.04.2017)
-            </p>
+
+            <jsp:useBean id="FormularData" class="Model.Kontaktformular" scope="session" />
+            <jsp:setProperty name="FormularData" property="firstname"/>
+            <jsp:setProperty name="FormularData" property="lastname"/>
+            <jsp:setProperty name="FormularData" property="date"/>
+            <jsp:setProperty name="FormularData" property="description"/>
+            <jsp:setProperty name="FormularData" property="message"/>
+
+            <ul >
+                <li style="list-style: none">Vorname: <jsp:getProperty name="FormularData" property="firstname"/></li>
+                <li style="list-style: none">Nachname: <jsp:getProperty name="FormularData" property="lastname"/></li>
+                <li style="list-style: none">Datum: <jsp:getProperty name="FormularData" property="date"/></li>
+                <li style="list-style: none">Grund: <jsp:getProperty name="FormularData" property="description"/></li>
+                <li style="list-style: none">Text: <jsp:getProperty name="FormularData" property="message"/></li>
+            </ul>
         </div>
 
         <div id="rightside">

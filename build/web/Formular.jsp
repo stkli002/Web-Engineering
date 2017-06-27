@@ -15,8 +15,7 @@
         <div id="top">
             <img height="100" src="img/logo.png"/>
             <ul>
-                <li><a href="index.jsp">Startseite</a></li>
-                <li><a href="Details.jsp">Details</a></li>
+                <li><a href="KontaktServlet?action=all">Startseite</a></li>
                 <li><a href="Vorstand.html">Vorstand</a></li>
                 <li><a href="Formular.jsp">Formular</a></li>
             </ul>
@@ -43,7 +42,7 @@
                         <br/>
 
                         <label>Grund:</label>
-                        <select name="desciption">
+                        <select name="description">
                             <option>Sonstiges</option>
                             <option>Feedback</option>
                             <option>Support</option>
@@ -59,6 +58,8 @@
                             <button style="float: left;" type="submit">Absenden</button>
                             <button style="float: right;" type="reset">Löschen</button>
                         </div>
+                        
+                        <input type="hidden" name="action" value="form"/>
                     </fieldset>
                 </form>
             </div>
