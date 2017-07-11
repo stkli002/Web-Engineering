@@ -12,6 +12,9 @@
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
         <link rel="icon" href="favicon.ico"/>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>       
         <div class="container">
@@ -101,7 +104,5 @@
                 </p>
             </div>
         </div>
-
-        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

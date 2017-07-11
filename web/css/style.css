@@ -68,3 +68,17 @@ fieldset#formular button {
     font-size: 13px;
     margin: 4px 0px 0px 0px;
 }
+
+#chatarea{
+    width: 31%;
+    border: thin solid;
+}
+
+#chatarea ul{  
+    padding-left: 0px;
+}
+
+#chatarea li{
+    padding-left: 0px;
+    list-style: none;
+}
